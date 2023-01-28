@@ -1,0 +1,23 @@
+$screen_width: 90vw;
+$screen_height: calc($screen_width * (9 / 16));
+
+.screen {
+  width: $screen_width;
+  height: $screen_height;
+  background-color: #000;
+  position: absolute;
+  bottom: 50%;
+  right: 50%;
+  transform: translate(50%, 50%);
+  text-align: center;
+  font-family: Courier, '游明朝';
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .sub-title {
+    width: 70%;
+    text-align: left;
+  }
+}
