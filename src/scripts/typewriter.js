@@ -2,16 +2,20 @@ import '../styles/typewriter.scss';
 
 const settings = {
   delay: 300,
+  stand: 3000
 };
 const h1 = document.querySelector('h1');
-const titleText = h1.textContent;
+console.log(document.title);
+const titleText = h1.textContent === '' ? document.title : h1.textContent;
 const txtArr = titleText.split('');
 const txtLength = txtArr.length;
-console.log(h1, titleText, txtArr, txtLength);
+console.log({ h1 }, titleText, txtArr, txtLength);
+console.log(h1.innerHTML);
 
 const typeSound = new Audio('sound/02.mp3');
 typeSound.volume = 0.3;
 const returnSound = new Audio('sound/return.mp3');
+console.log({returnSound});
 
 const screen = document.createElement('div');
 screen.classList.add('screen');
@@ -28,7 +32,7 @@ console.log(width, height);
 const fontSize = Math.floor(height * 0.6) + 'px';
 paragraph.style.fontSize = fontSize;
 subtitle.style.fontSize = height / 5 + 'px';
-subtitle.textContent = titleText;
+subtitle.innerHTML = h1.innerHTML;
 
 const showChar = char => {
   return new Promise(resolve => {
@@ -36,7 +40,7 @@ const showChar = char => {
       console.log(char);
       paragraph.textContent = char;
       typeSound.currentTime = 0;
-      // typeSound.play();
+      typeSound.play();
       resolve('show char');
     }, settings.delay);
   });
@@ -60,15 +64,25 @@ const removeParagraph = async paragraph => {
 };
 
 const showSubtitle = async subtitle => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      screen.appendChild(subtitle);
+      resolve('subtitle');
+    }, 1500);
+  });
+};
+
+const removeScreen = async () => {
   setTimeout(() => {
-    screen.appendChild(subtitle);
-  },1500);
+    document.body.removeChild(screen);
+  }, settings.stand);
 };
 
 const typewriter = async () => {
   await showSingleCharacter(txtArr);
   await removeParagraph(paragraph);
   await showSubtitle(subtitle);
+  await removeScreen();
 };
 
 typewriter();
