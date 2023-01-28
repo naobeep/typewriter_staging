@@ -5,7 +5,7 @@ export class Typewriter {
       this.h1.textContent === '' ? document.title : this.h1.textContent;
     this.textArray = this.titleText.split('');
     this.sound = {
-      type: new Audio('sound/02.mp3'),
+      type: new Audio('sound/type.mp3'),
       return: new Audio('sound/return.mp3'),
     };
     this.screen = document.createElement('div');
