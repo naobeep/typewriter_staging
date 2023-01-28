@@ -1,4 +1,7 @@
-export const showChar = char => {
+import { settings } from "./_settings";
+import { paragraph ,typeSound} from './_initialize';
+
+export const showChar = (char) => {
   return new Promise(resolve => {
     setTimeout(() => {
       console.log(char);
