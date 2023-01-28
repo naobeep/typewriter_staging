@@ -1,6 +1,6 @@
 export class Typewriter {
-  constructor({ delay, stand, waitReturnSound, alternativeCode }) {
-    this.settings = { delay, stand, waitReturnSound, alternativeCode };
+  constructor({ delay, wait, alternativeCode }) {
+    this.settings = { delay, wait, alternativeCode };
     this.h1 = document.querySelector('h1');
     this.titleText =
       this.h1.textContent === '' ? document.title : this.h1.textContent;
@@ -73,13 +73,13 @@ export class Typewriter {
       setTimeout(() => {
         this.screen.appendChild(this.subtitle);
         resolve('show subtitle');
-      }, this.settings.waitReturnSound);
+      }, this.settings.wait);
     });
   }
   _removeScreen() {
     setTimeout(() => {
       document.body.removeChild(this.screen);
-    }, this.settings.delay * this.textArray.length);
+    }, this.settings.delay * this.textArray.length + 1000);
   }
   async _runAll() {
     this._init();
