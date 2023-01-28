@@ -86,6 +86,6 @@ export class Typewriter {
     await this._showSingleCharacter();
     await this._removeParagraph();
     await this._showSubtitle();
-    // await this._removeScreen();
+    await this._removeScreen();
   }
 }
