@@ -16,7 +16,7 @@ screen.classList.add('screen');
 const paragraph = document.createElement('p');
 paragraph.classList.add('char');
 const subtitle = document.createElement('p');
-subtitle.classList.add('sub-title');
+subtitle.classList.add('subtitle');
 screen.appendChild(paragraph);
 
 document.body.appendChild(screen);
