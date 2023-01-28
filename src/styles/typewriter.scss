@@ -19,6 +19,7 @@ $screen_height: calc($screen_width * (9 / 16));
   .subtitle {
     width: 70%;
     text-align: center;
+    word-wrap: break-word;
     span {
       display: inline-block;
 

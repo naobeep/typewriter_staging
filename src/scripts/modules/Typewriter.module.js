@@ -23,7 +23,11 @@ export class Typewriter {
     const { height } = this.screen.getBoundingClientRect();
     this.paragraph.style.fontSize = Math.floor(height * 0.6) + 'px';
     this.subtitle.style.fontSize = Math.floor(height / 5) + 'px';
-    this.subtitle.innerHTML = this.h1.innerHTML;
+    const putInside = () => {
+      if (this.h1.textContent !== '') return this.h1.innerHTML;
+      return document.title;
+    };
+    this.subtitle.innerHTML = putInside();
     this.sound.type.volume = 0.3;
   }
   _showChar(char) {
