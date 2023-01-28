@@ -46,10 +46,10 @@ export class Typewriter {
   }
   _showChar(char) {
     return new Promise(resolve => {
+      this.sound.type.currentTime = 0;
+      this.sound.type.play();
       setTimeout(() => {
         this.paragraph.textContent = char;
-        this.sound.type.currentTime = 0;
-        this.sound.type.play();
         resolve('show char');
       }, this.settings.delay);
     });
@@ -79,7 +79,7 @@ export class Typewriter {
   _removeScreen() {
     setTimeout(() => {
       document.body.removeChild(this.screen);
-    }, this.settings.delay * this.textArray.length + 1000);
+    }, this.settings.delay * this.textArray.length + this.settings.wait);
   }
   async _runAll() {
     this._init();
