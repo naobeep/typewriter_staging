@@ -1,5 +1,5 @@
 const userSettings = {
   delay: 300,
   wait: 1500,
-  // alternativeCode:'狼は走れ、豚は転がれ',
+  // alternativeCode:'<span>狼は走れ、</span><span>豚は転がれ</span>',
 };
