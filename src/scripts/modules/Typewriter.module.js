@@ -1,16 +1,11 @@
 export class Typewriter {
-  constructor({ delay, wait, alternativeCode }) {
-    this.settings = { delay, wait, alternativeCode };
+  constructor({ delay, wait, stand, alternativeCode }) {
+    this.settings = { delay, wait, stand, alternativeCode };
     this.h1 = document.querySelector('h1');
     this.titleText =
       this.h1.textContent === '' ? document.title : this.h1.textContent;
-    this.alternativeText = this.settings.alternativeCode
-      ?.replaceAll('<span>', '')
-      .replaceAll('</span>', '')
-      .split('');
-    this.textArray = this.settings.alternativeCode
-      ? this.alternativeText
-      : this.titleText.split('');
+    this.alternativeText;
+    this.textArray;
     this.sound = {
       type: new Audio('sound/type.mp3'),
       return: new Audio('sound/return.mp3'),
@@ -21,10 +16,12 @@ export class Typewriter {
     this._runAll();
   }
   _getSubtitleFontSize() {
-    const standard = Math.floor((this.width * 0.7) / this.textArray.length);
-    if (this.textArray.length < 10) standard + 'px';
-
-    return standard * 1.7 + 'px';
+    const { width, height } = this.screen.getBoundingClientRect();
+    const standard = Math.floor((width * 0.7) / this.textArray.length);
+    const mag = Math.ceil(this.textArray.length / 10);
+    const fontSize = Math.floor(standard * mag * 0.9);
+    if (fontSize > height * 0.7) return Math.floor(height * 0.7) + 'px';
+    return fontSize + 'px';
   }
   _getInside() {
     if (this.settings.alternativeCode) return this.settings.alternativeCode;
@@ -32,14 +29,18 @@ export class Typewriter {
     return document.title;
   }
   _init() {
+    this.alternativeText = this.settings.alternativeCode
+      ?.replaceAll('<span>', '')
+      .replaceAll('</span>', '')
+      .split('');
+    this.textArray = this.settings.alternativeCode
+      ? this.alternativeText
+      : this.titleText.split('');
     this.screen.classList.add('screen');
-    this.paragraph.classList.add('char');
+    this.paragraph.classList.add('character');
     this.subtitle.classList.add('subtitle');
     this.screen.appendChild(this.paragraph);
     document.body.appendChild(this.screen);
-    const { height } = this.screen.getBoundingClientRect();
-    this.width = this.screen.getBoundingClientRect().width;
-    this.paragraph.style.fontSize = Math.floor(height * 0.6) + 'px';
     this.subtitle.style.fontSize = this._getSubtitleFontSize();
     this.subtitle.innerHTML = this._getInside();
     this.sound.type.volume = 0.3;
@@ -79,7 +80,7 @@ export class Typewriter {
   _removeScreen() {
     setTimeout(() => {
       document.body.removeChild(this.screen);
-    }, this.settings.delay * this.textArray.length + this.settings.wait);
+    }, this.settings.delay * this.textArray.length + this.settings.stand);
   }
   async _runAll() {
     this._init();

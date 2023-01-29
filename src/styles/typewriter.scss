@@ -6,26 +6,28 @@ $screen_height: calc($screen_width * (9 / 16));
   height: $screen_height;
   background-color: #000;
   position: absolute;
-  bottom: 50%;
-  right: 50%;
-  transform: translate(50%, 50%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
-  font-family: 'Courier','游明朝';
+  font-family: 'Courier', '游明朝';
   color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
 
+  .character {
+    font-size: $screen_height * 0.6;
+  }
+
   .subtitle {
-    width: 70%;
-    text-align: center;
+    height: fit-content;
+    max-width: 70%;
+    max-height: 70%;
     word-wrap: break-word;
+    max-height: $screen_height * 0.7;
     span {
       display: inline-block;
-
-      &:nth-child(even) {
-        text-align: right;
-      }
     }
   }
 }
