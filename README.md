@@ -24,3 +24,9 @@
   - wait: `<number>`全文表示までの待機時間
   - stand: `<number>`スクリーン削除までの待機時間
   - alternativeCode: `<string>`隠し機能。タイプライター演出で表示する文字を差し替えます。
+
+## changelog
+
+- 1.1.0 20230131
+  - 開始時にクリックを促すダイアログを追加
+  - userSettingsのフェイルセーフを改善
