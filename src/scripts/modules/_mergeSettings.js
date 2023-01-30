@@ -5,6 +5,7 @@ const defaultSettings = {
 };
 
 export const mergeSettings = () => {
-  if (userSettings === undefined) return defaultSettings;
+  if (typeof userSettings == 'undefined' || userSettings === undefined)
+    return defaultSettings;
   return { ...defaultSettings, ...userSettings };
 };

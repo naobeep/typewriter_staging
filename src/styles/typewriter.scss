@@ -16,6 +16,14 @@ $screen_height: calc($screen_width * (9 / 16));
   justify-content: center;
   align-items: center;
 
+  .attention {
+    font-size: 48px;
+
+    span {
+      font-size: 2rem;
+    }
+  }
+
   .character {
     font-size: $screen_height * 0.6;
   }

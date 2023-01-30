@@ -28,6 +28,17 @@ export class Typewriter {
     if (this.h1.textContent !== '') return this.h1.innerHTML;
     return document.title;
   }
+  _start() {
+    const attention = document.createElement('p');
+    attention.classList.add('attention');
+    attention.innerHTML = '注意：音が出ます<br><span>クリックでスタート</span>';
+    this.screen.appendChild(attention);
+    this.screen.addEventListener('click', () => {
+      this.screen.removeChild(attention);
+      console.log('start');
+      this._runAll();
+    });
+  }
   _init() {
     this.alternativeText = this.settings.alternativeCode
       ?.replaceAll('<span>', '')
@@ -84,9 +95,16 @@ export class Typewriter {
   }
   async _runAll() {
     this._init();
-    await this._showSingleCharacter();
-    await this._removeParagraph();
-    await this._showSubtitle();
-    await this._removeScreen();
+    const attention = document.createElement('p');
+    attention.classList.add('attention');
+    attention.innerHTML = '注意：音が出ます<br><span>クリックでスタート</span>';
+    this.screen.appendChild(attention);
+    this.screen.addEventListener('click', async () => {
+      this.screen.removeChild(attention);
+      await this._showSingleCharacter();
+      await this._removeParagraph();
+      await this._showSubtitle();
+      await this._removeScreen();
+    });
   }
 }
