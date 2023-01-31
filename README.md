@@ -1,7 +1,7 @@
 # typewriter_plugin
 
 タイプライター風にタイトルを表示するプラグインです。
-効果音は[オトロジック](https://otologic.jp/)（CC BY 4.0）様作成の[ライプライター01](https://otologic.jp/sounds/se/mp3-zip/Typewriter01-mp3.zip)を加工して使用しています。
+効果音は[オトロジック](https://otologic.jp/)（CC BY 4.0）様作成の[タイプライター01](https://otologic.jp/sounds/se/mp3-zip/Typewriter01-mp3.zip)を加工して使用しています。
 
 ## install
 
@@ -27,6 +27,8 @@
 
 ## changelog
 
+- 1.1.1 20230201
+  - 効果音の著作権明示
 - 1.1.0 20230131
   - 開始時にクリックを促すダイアログを追加
   - userSettingsのフェイルセーフを改善

@@ -28,17 +28,6 @@ export class Typewriter {
     if (this.h1.textContent !== '') return this.h1.innerHTML;
     return document.title;
   }
-  _start() {
-    const attention = document.createElement('p');
-    attention.classList.add('attention');
-    attention.innerHTML = '注意：音が出ます<br><span>クリックでスタート</span>';
-    this.screen.appendChild(attention);
-    this.screen.addEventListener('click', () => {
-      this.screen.removeChild(attention);
-      console.log('start');
-      this._runAll();
-    });
-  }
   _init() {
     this.alternativeText = this.settings.alternativeCode
       ?.replaceAll('<span>', '')
@@ -97,7 +86,8 @@ export class Typewriter {
     this._init();
     const attention = document.createElement('p');
     attention.classList.add('attention');
-    attention.innerHTML = '注意：音が出ます<br><span>クリックでスタート</span>';
+    attention.innerHTML =
+      '注意：音が出ます<br><span>クリックでスタート</span><span class="credit">効果音提供： オトロジック様</span>';
     this.screen.appendChild(attention);
     this.screen.addEventListener('click', async () => {
       this.screen.removeChild(attention);
