@@ -26,12 +26,12 @@ export default defineConfig({
     cssCodeSplit: true,
     outDir: '../dist',
     target: 'esnext',
-    // minify: 'terser',
-    // terserOptions: {
-    //   compress: {
-    //     drop_console: true,
-    //   },
-    // },
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+      },
+    },
   },
   base: './',
   server: {
